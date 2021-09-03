@@ -14,7 +14,7 @@ namespace MicroRabbit.Infra.IoC
 {
     public class DependencyContainer
     {
-        public static void RegisterServices(IServiceCollection services)
+        public static void RegisterBankingServices(IServiceCollection services)
         {
             // bus
             services.AddTransient<IEventBus, RabbitMQBus>();
@@ -27,9 +27,9 @@ namespace MicroRabbit.Infra.IoC
             // Data
             services.AddTransient<IAccountRepository, AccountRepository>();
             services.AddTransient<BankingDbContext>();
-
-
-
+        }
+        public static void RegisterTransferServices(IServiceCollection services) {
+            services.AddTransient<TransferDbContext>();
         }
     }
 }
